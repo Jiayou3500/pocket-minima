@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KY.C Web Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-title">KY.C Web Generator</div>
+        <div class="nav-links">
+            <a href="#" id="generateLink">Generate a Web App</a>
+            <a href="#" id="feedbackLink">Feedback to Developer</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>KY.C Web Generator</h1>
+            <p>Try now to generate your own website / portfolio in seconds! It's totally code-free!</p>
+        </div>
+
+        <div class="form-section" id="formSection">
+            <div class="step-indicator">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+
+            <div class="dialog-box">
+                <!-- Step 1: Website Title -->
+                <div class="step-content" id="step1">
+                    <h2>Name your website</h2>
+                    <div class="input-group">
+                        <label for="websiteTitle">Title:</label>
+                        <input type="text" id="websiteTitle" placeholder="Enter your website title">
+                    </div>
+                    <button class="btn" onclick="nextStep(2)">Next</button>
+                </div>
+
+                <!-- Step 2: Theme Selection -->
+                <div class="step-content" id="step2" style="display: none;">
+                    <h2>Choose your theme</h2>
+                    <div class="theme-options">
+                        <button class="theme-btn gradient-blue" onclick="selectTheme('gradient-blue')">
+                            <span>Gradient Blue</span>
+                        </button>
+                        <button class="theme-btn gradient-pink" onclick="selectTheme('gradient-pink')">
+                            <span>Gradient Pink</span>
+                        </button>
+                        <button class="theme-btn gradient-black" onclick="selectTheme('gradient-black')">
+                            <span>Gradient Black</span>
+                        </button>
+                        <button class="theme-btn full-white" onclick="selectTheme('full-white')">
+                            <span>Full white</span>
+                        </button>
+                        <button class="theme-btn gradient-green" onclick="selectTheme('gradient-green')">
+                            <span>Gradient Green</span>
+                        </button>
+                        <button class="theme-btn gradient-yellow" onclick="selectTheme('gradient-yellow')">
+                            <span>Gradient Yellow</span>
+                        </button>
+                        <button class="theme-btn gradient-red" onclick="selectTheme('gradient-red')">
+                            <span>Gradient Red</span>
+                        </button>
+                    </div>
+                    <button class="btn" onclick="nextStep(3)" id="themeNextBtn" disabled>Next</button>
+                </div>
+
+                <!-- Step 3: Topbar Color -->
+                <div class="step-content" id="step3" style="display: none;">
+                    <h2>Choose your top bar color</h2>
+                    <div class="color-options">
+                        <button class="color-btn white" onclick="selectColor('white')">
+                            <span>White</span>
+                        </button>
+                        <button class="color-btn black" onclick="selectColor('black')">
+                            <span>Black</span>
+                        </button>
+                        <button class="color-btn grey" onclick="selectColor('grey')">
+                            <span>Grey</span>
+                        </button>
+                         <button class="color-btn blue" onclick="selectColor('blue')">
+                            <span>Blue</span>
+                        </button>
+                         <button class="color-btn red" onclick="selectColor('red')">
+                            <span>Red</span>
+                        </button>
+                    </div>
+                    <button class="btn" onclick="nextStep(4)" id="colorNextBtn" disabled>Next</button>
+                </div>
+
+                <!-- Step 4: Brand Name -->
+                <div class="step-content" id="step4" style="display: none;">
+                    <h2>Write your brand name</h2>
+                    <div class="input-group">
+                        <label for="brandName">Brand Name:</label>
+                        <input type="text" id="brandName" placeholder="Text display in the top bar">
+                    </div>
+                    <button class="btn" onclick="nextStep(5)">Next</button>
+                </div>
+
+                <!-- Step 5: First Line -->
+                <div class="step-content" id="step5" style="display: none;">
+                    <h2>Type your first-line</h2>
+                    <div class="input-group">
+                        <label for="headline">Headline:</label>
+                        <input type="text" id="headline" placeholder="Your main headline">
+                    </div>
+                    <button class="btn" onclick="nextStep(6)">Next</button>
+                </div>
+
+                <!-- Step 6: Description -->
+                <div class="step-content" id="step6" style="display: none;">
+                    <h2>Tell us what about you:</h2>
+                    <div class="input-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" placeholder="Write your description here..."></textarea>
+                    </div>
+                    <button class="btn" onclick="generateWebsite()">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section" id="previewSection">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; font-weight: 400;">Your Generated Website (Preview)</h2>
+            <div class="preview-container" id="previewContainer">
+                <!-- Preview will be injected here -->
+            </div>
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="resetForm()">Create Another</button>
+                <button class="btn" onclick="downloadWebsite()">Download HTML</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
