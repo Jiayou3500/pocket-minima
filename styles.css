@@ -182,6 +182,101 @@ textarea {
     resize: vertical;
 }
 
+/* Image Upload */
+.upload-box {
+    position: relative;
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+}
+
+.upload-placeholder:hover {
+    border-color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.01);
+}
+
+.upload-placeholder svg {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.upload-placeholder p {
+    font-size: 0.95rem;
+}
+
+.image-preview {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.remove-image {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.remove-image:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Position Options */
+.position-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.position-btn {
+    padding: 1.5rem 1rem;
+    border: 2px solid var(--border-color);
+    background: white;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Times New Roman', serif;
+    font-size: 0.95rem;
+}
+
+.position-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.position-btn.selected {
+    border-color: var(--text-primary);
+    border-width: 2px;
+}
+
 /* Theme Selection */
 .theme-options,
 .color-options {
@@ -324,11 +419,248 @@ textarea {
     animation: fadeInUp 0.8s ease;
 }
 
+/* Section Builder */
+.section-builder {
+    display: none;
+    max-width: 800px;
+    margin: 4rem auto 0;
+    opacity: 0;
+}
+
+.section-builder.active {
+    display: block;
+    opacity: 1;
+    animation: fadeInUp 0.8s ease;
+}
+
+.section-content {
+    /* Content sections inherit from dialog-box */
+}
+
+/* Format Selection */
+.format-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.format-btn {
+    padding: 1.5rem 1rem;
+    border: 2px solid var(--border-color);
+    background: white;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Times New Roman', serif;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.format-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.format-preview-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.format-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.format-box {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: #666;
+}
+
+.format-image {
+    background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+    border: 1px solid #ccc;
+}
+
+.format-text {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    aspect-ratio: 2;
+}
+
+.format-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.format-btn.selected {
+    border-color: var(--text-primary);
+    border-width: 2px;
+}
+
+/* Two Column Inputs */
+.two-column-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.column-input h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* Preview Section 2 */
+.preview-section2 {
+    padding: 4rem 3rem;
+}
+
+.preview-section2-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.preview-section2-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+.preview-section2-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.preview-section2-text p {
+    margin: 0;
+}
+
+.preview-section2-two-columns {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.preview-column-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+.preview-column-text {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.preview-column-text p {
+    margin: 0;
+}
+
+/* Link Button */
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: 'Times New Roman', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--text-primary);
+}
+
 .preview-container {
     border: 1px solid var(--border-color);
     border-radius: 2px;
     overflow: hidden;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+}
+
+.preview-header {
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.preview-header-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.preview-header-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.preview-header-links a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: opacity 0.3s ease;
+}
+
+.preview-header-links a:hover {
+    opacity: 0.6;
+}
+
+.preview-footer {
+    padding: 2rem 3rem;
+    text-align: center;
+}
+
+.preview-footer-text {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.preview-footer-links {
+    font-size: 0.85rem;
+}
+
+.preview-footer-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.preview-footer-links a:hover {
+    opacity: 0.6;
 }
 
 .preview-topbar {
@@ -348,6 +680,31 @@ textarea {
     padding: 4rem 3rem;
 }
 
+.preview-content-with-image {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.preview-image-container {
+    flex: 1;
+    max-width: 400px;
+}
+
+.preview-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+.preview-text-container {
+    flex: 1;
+    max-width: 500px;
+}
+
 .preview-headline {
     font-size: 3.5rem;
     font-weight: 400;
@@ -356,12 +713,20 @@ textarea {
     text-align: center;
 }
 
+.preview-text-container .preview-headline {
+    text-align: left;
+}
+
 .preview-description {
     font-size: 1.15rem;
     max-width: 700px;
     line-height: 1.8;
     text-align: center;
     opacity: 0.9;
+}
+
+.preview-text-container .preview-description {
+    text-align: left;
 }
 
 .action-buttons {
@@ -439,8 +804,44 @@ textarea {
         grid-template-columns: 1fr;
     }
 
+    .format-options {
+        grid-template-columns: 1fr;
+    }
+
+    .two-column-inputs {
+        grid-template-columns: 1fr;
+    }
+
     .preview-headline {
         font-size: 2rem;
+    }
+
+    .preview-content-with-image {
+        flex-direction: column !important;
+        padding: 3rem 1.5rem;
+    }
+
+    .preview-image-container {
+        max-width: 100%;
+    }
+
+    .preview-text-container .preview-headline,
+    .preview-text-container .preview-description {
+        text-align: center;
+    }
+
+    .preview-section2 {
+        padding: 3rem 1.5rem;
+    }
+
+    .preview-section2-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .preview-section2-two-columns {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .action-buttons {
