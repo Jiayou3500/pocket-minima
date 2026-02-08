@@ -29,6 +29,10 @@
                 <div class="step-dot"></div>
                 <div class="step-dot"></div>
                 <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
             </div>
 
             <div class="dialog-box">
@@ -71,57 +75,128 @@
                     <button class="btn" onclick="nextStep(3)" id="themeNextBtn" disabled>Next</button>
                 </div>
 
-                <!-- Step 3: Topbar Color -->
+                <!-- Step 3: Header Configuration -->
                 <div class="step-content" id="step3" style="display: none;">
-                    <h2>Choose your top bar color</h2>
-                    <div class="color-options">
-                        <button class="color-btn white" onclick="selectColor('white')">
-                            <span>White</span>
-                        </button>
-                        <button class="color-btn black" onclick="selectColor('black')">
-                            <span>Black</span>
-                        </button>
-                        <button class="color-btn grey" onclick="selectColor('grey')">
-                            <span>Grey</span>
-                        </button>
-                         <button class="color-btn blue" onclick="selectColor('blue')">
-                            <span>Blue</span>
-                        </button>
-                         <button class="color-btn red" onclick="selectColor('red')">
-                            <span>Red</span>
-                        </button>
-                    </div>
-                    <button class="btn" onclick="nextStep(4)" id="colorNextBtn" disabled>Next</button>
-                </div>
-
-                <!-- Step 4: Brand Name -->
-                <div class="step-content" id="step4" style="display: none;">
-                    <h2>Write your brand name</h2>
+                    <h2>Configure your header</h2>
                     <div class="input-group">
-                        <label for="brandName">Brand Name:</label>
-                        <input type="text" id="brandName" placeholder="Text display in the top bar">
+                        <label for="headerBrandName">Brand Name (Left):</label>
+                        <input type="text" id="headerBrandName" placeholder="Your brand name">
                     </div>
-                    <button class="btn" onclick="nextStep(5)">Next</button>
+                    <div class="input-group">
+                        <label for="headerLinks">Navigation Links (Optional):</label>
+                        <input type="text" id="headerLinks" placeholder="e.g., Home, About, Contact (comma separated)">
+                        <small style="color: #666; font-size: 0.85rem;">Leave empty for brand name only</small>
+                    </div>
+                    <div class="input-group">
+                        <label>Header Background Color:</label>
+                        <div class="color-options">
+                            <button class="color-btn white" onclick="selectHeaderColor('white')">
+                                <span>White</span>
+                            </button>
+                            <button class="color-btn black" onclick="selectHeaderColor('black')">
+                                <span>Black</span>
+                            </button>
+                            <button class="color-btn grey" onclick="selectHeaderColor('grey')">
+                                <span>Grey</span>
+                            </button>
+                            <button class="color-btn blue" onclick="selectHeaderColor('blue')">
+                                <span>Blue</span>
+                            </button>
+                            <button class="color-btn red" onclick="selectHeaderColor('red')">
+                                <span>Red</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="nextStep(4)" id="headerNextBtn" disabled>Next</button>
                 </div>
 
-                <!-- Step 5: First Line -->
-                <div class="step-content" id="step5" style="display: none;">
+                <!-- Step 4: First Line -->
+                <div class="step-content" id="step4" style="display: none;">
                     <h2>Type your first-line</h2>
                     <div class="input-group">
                         <label for="headline">Headline:</label>
                         <input type="text" id="headline" placeholder="Your main headline">
                     </div>
-                    <button class="btn" onclick="nextStep(6)">Next</button>
+                    <button class="btn" onclick="nextStep(5)">Next</button>
                 </div>
 
-                <!-- Step 6: Description -->
-                <div class="step-content" id="step6" style="display: none;">
+                <!-- Step 5: Description -->
+                <div class="step-content" id="step5" style="display: none;">
                     <h2>Tell us what about you:</h2>
                     <div class="input-group">
                         <label for="description">Description:</label>
                         <textarea id="description" placeholder="Write your description here..."></textarea>
                     </div>
-                    <button class="btn" onclick="generateWebsite()">Submit</button>
+                    <button class="btn" onclick="nextStep(6)">Next</button>
+                </div>
+
+                <!-- Step 6: Image Upload -->
+                <div class="step-content" id="step6" style="display: none;">
+                    <h2>Add an image (Optional)</h2>
+                    <div class="input-group">
+                        <label for="imageUpload">Choose Image:</label>
+                        <div class="upload-box" id="uploadBox">
+                            <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                            <div class="upload-placeholder" id="uploadPlaceholder" onclick="document.getElementById('imageUpload').click()">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <p>Click to upload image</p>
+                            </div>
+                            <div class="image-preview" id="imagePreview" style="display: none;">
+                                <img id="previewImg" src="" alt="Preview">
+                                <button class="remove-image" onclick="removeImage()">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Choose image position:</label>
+                        <div class="position-options">
+                            <button class="position-btn" onclick="selectPosition('left')">
+                                <span>Left</span>
+                            </button>
+                            <button class="position-btn" onclick="selectPosition('right')">
+                                <span>Right</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="nextStep(7)">Next</button>
+                </div>
+
+                <!-- Step 7: Footer Configuration -->
+                <div class="step-content" id="step7" style="display: none;">
+                    <h2>Configure your footer</h2>
+                    <div class="input-group">
+                        <label for="footerText">Footer Text:</label>
+                        <input type="text" id="footerText" placeholder="e.g., © 2024 Your Company. All rights reserved.">
+                    </div>
+                    <div class="input-group">
+                        <label for="footerLinks">Footer Links (Optional):</label>
+                        <input type="text" id="footerLinks" placeholder="e.g., Privacy Policy, Terms, Contact (comma separated)">
+                    </div>
+                    <div class="input-group">
+                        <label>Footer Background Color:</label>
+                        <div class="color-options">
+                            <button class="color-btn white" onclick="selectFooterColor('white')">
+                                <span>White</span>
+                            </button>
+                            <button class="color-btn black" onclick="selectFooterColor('black')">
+                                <span>Black</span>
+                            </button>
+                            <button class="color-btn grey" onclick="selectFooterColor('grey')">
+                                <span>Grey</span>
+                            </button>
+                            <button class="color-btn blue" onclick="selectFooterColor('blue')">
+                                <span>Blue</span>
+                            </button>
+                            <button class="color-btn red" onclick="selectFooterColor('red')">
+                                <span>Red</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="generateWebsite()" id="footerNextBtn" disabled>Submit</button>
                 </div>
             </div>
         </div>
@@ -132,8 +207,133 @@
                 <!-- Preview will be injected here -->
             </div>
             <div class="action-buttons">
-                <button class="btn-secondary" onclick="resetForm()">Create Another</button>
+                <button class="btn-secondary" onclick="addAnotherSection()">Add Another Section</button>
                 <button class="btn" onclick="downloadWebsite()">Download HTML</button>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="btn-link" onclick="resetForm()">Start over</button>
+            </div>
+        </div>
+
+        <!-- Section Builder -->
+        <div class="section-builder" id="sectionBuilder">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem; font-weight: 400;">Add New Section</h2>
+            
+            <div class="dialog-box">
+                <!-- Format Selection -->
+                <div class="section-content" id="sectionFormat">
+                    <h2>What format do you want?</h2>
+                    <div class="format-options">
+                        <button class="format-btn" onclick="selectFormat('image-text')">
+                            <div class="format-preview">
+                                <div class="format-box format-image">Image</div>
+                                <div class="format-box format-text">Description</div>
+                            </div>
+                            <span>Image + Description</span>
+                        </button>
+                        <button class="format-btn" onclick="selectFormat('two-columns')">
+                            <div class="format-preview-2col">
+                                <div class="format-col">
+                                    <div class="format-box format-image">Image 1</div>
+                                    <div class="format-box format-text">Desc 1</div>
+                                </div>
+                                <div class="format-col">
+                                    <div class="format-box format-image">Image 2</div>
+                                    <div class="format-box format-text">Desc 2</div>
+                                </div>
+                            </div>
+                            <span>2 Images + 2 Descriptions</span>
+                        </button>
+                    </div>
+                    <button class="btn" onclick="showSectionContent()" id="formatNextBtn" disabled>Next</button>
+                </div>
+
+                <!-- Content Input (Image + Text) -->
+                <div class="section-content" id="sectionImageText" style="display: none;">
+                    <h2>Add your content</h2>
+                    <div class="input-group">
+                        <label for="sectionImage">Upload Image:</label>
+                        <div class="upload-box">
+                            <input type="file" id="sectionImage" accept="image/*" style="display: none;" onchange="handleSectionImageUpload(event, 'sectionImage')">
+                            <div class="upload-placeholder" id="sectionImagePlaceholder" onclick="document.getElementById('sectionImage').click()">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <p>Click to upload image</p>
+                            </div>
+                            <div class="image-preview" id="sectionImagePreview" style="display: none;">
+                                <img id="sectionImagePreviewImg" src="" alt="Preview">
+                                <button class="remove-image" onclick="removeSectionImage('sectionImage')">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="sectionText">Description:</label>
+                        <textarea id="sectionText" placeholder="Write your description here..."></textarea>
+                    </div>
+                    <button class="btn" onclick="addNewSection()">Add Section</button>
+                </div>
+
+                <!-- Content Input (Two Columns) -->
+                <div class="section-content" id="sectionTwoColumns" style="display: none;">
+                    <h2>Add your content</h2>
+                    <div class="two-column-inputs">
+                        <div class="column-input">
+                            <h3>Column 1</h3>
+                            <div class="input-group">
+                                <label for="sectionImage1">Upload Image 1:</label>
+                                <div class="upload-box">
+                                    <input type="file" id="sectionImage1" accept="image/*" style="display: none;" onchange="handleSectionImageUpload(event, 'sectionImage1')">
+                                    <div class="upload-placeholder" id="sectionImage1Placeholder" onclick="document.getElementById('sectionImage1').click()">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                        <p>Click to upload</p>
+                                    </div>
+                                    <div class="image-preview" id="sectionImage1Preview" style="display: none;">
+                                        <img id="sectionImage1PreviewImg" src="" alt="Preview">
+                                        <button class="remove-image" onclick="removeSectionImage('sectionImage1')">✕</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="sectionText1">Description 1:</label>
+                                <textarea id="sectionText1" placeholder="Write description for image 1..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="column-input">
+                            <h3>Column 2</h3>
+                            <div class="input-group">
+                                <label for="sectionImage2">Upload Image 2:</label>
+                                <div class="upload-box">
+                                    <input type="file" id="sectionImage2" accept="image/*" style="display: none;" onchange="handleSectionImageUpload(event, 'sectionImage2')">
+                                    <div class="upload-placeholder" id="sectionImage2Placeholder" onclick="document.getElementById('sectionImage2').click()">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                        <p>Click to upload</p>
+                                    </div>
+                                    <div class="image-preview" id="sectionImage2Preview" style="display: none;">
+                                        <img id="sectionImage2PreviewImg" src="" alt="Preview">
+                                        <button class="remove-image" onclick="removeSectionImage('sectionImage2')">✕</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="sectionText2">Description 2:</label>
+                                <textarea id="sectionText2" placeholder="Write description for image 2..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="addNewSection()">Add Section</button>
+                </div>
             </div>
         </div>
     </div>
